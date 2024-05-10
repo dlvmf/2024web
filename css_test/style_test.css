@@ -1,0 +1,116 @@
+/* 글꼴 설정 */
+@font-face {
+    font-family: abster;
+    src: url(font/abster-webfont.woff) format('woff');
+} 
+/* 전체 선택 */
+*{
+    /* 바깥여백 초기화 */
+    margin: 0;
+    /* 내부 여백 초기화 */
+    padding: 0;
+    /* 박스 넘침 방지 */
+    box-sizing: border-box;
+}
+
+/* 배경처리 */
+.container{
+    /* 넓이 꽉 채움 */
+    width: 100%;
+    /* 높이 기기에 맞게 변하기 */
+    height: 100vh;
+    /* 배경에 그라데이션 + 배경 이미지 */
+    background: linear-gradient(rgba(69, 53, 72, 0.8), rgba(76, 61, 79, 0.6)), url(images/room.jpg);
+}
+/* 헤더배치 */
+.container .header{
+    /* header 요소 넓이, 높이> 해당영역의 크기 지정 */
+    width: 80%;
+    height: 80px;
+    /* header 여백 */
+    margin: 0 auto;
+    /* header 배치 위, 간격 */
+    display: flex;
+    justify-content: space-between;
+}
+/* 글자로고 */
+/* h1 안에 a가 글자요소를 가짐 */
+.container .header h1 a{
+    /* 색 */
+    color: white;
+    /* 밑줄 없애는 거, 글자 기본 속성을 none으로  */
+    text-decoration: none;
+    /* 글자 폰트 */
+    font-family: abster;
+}
+
+/* 메뉴요소 배치 */
+/* nav 안에있는 요소 >> ul */
+/* 메뉴 영역 배치를 위해 flex 사용, 각 요소별로 여백 설정 */
+.container .header .nav ul{
+    /* ul 요소 가로로 정렬 */
+    display: inline-flex;
+    /* 간격 */
+    justify-content: space-between;
+}
+.container .header .nav ul li{
+    /* 여백 */
+    margin: 0 10px;
+    /* list 스타일도 없애기 */
+    list-style: none;
+}
+/* 메뉴영역 배치를 위해 요소는 원래 블록요소 > 인라인 블록 요소로 변환, 여백 설정 */
+/*.container .header .nav ul li{
+    display: inline-block;
+    margin: 0 10px;
+}*/
+
+/* 메뉴요소 스타일링 */
+.container .header .nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+/* 메뉴요소 마우스이벤트 */
+/* 마우스 올렸을때 hover라고 해서 그때 색깔 */
+.container .header .nav ul li a:hover{
+  color: cadetblue;
+}
+/* 화면 중앙 요소 배치 */
+.container .hero{
+    /* hero요소 위치 위 왼에서 부터 가운데로 지정 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 왼,상은 -, 우, 하는 + */
+    /* 기준점을 브라우저 왼쪽 모서리소 설정,> 화면중앙으로 위치하기 위해 x축으로 50,y축으로 50 */
+    transform: translate(-50%,-50%);
+    color: white;
+    /* 가운데정렬 */
+    text-align:center;
+}
+/* 화면 중앙 요소 제목 */
+.container .hero h2{
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+/* 화면 중앙 요소 본문 */
+.container .hero p{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+/* 화면 중앙 요소 버튼 */
+.container .hero button{
+    /* 배경 없애고, 테두리 둥글게 */
+    background: none;
+    border-radius: 20px;
+    /* 보더 테두리 색, 굵기, 선모양 지정*/
+    border: 2px solid white;
+    padding: 10px 20px;
+    color: white;
+    /* 버튼위 요소와 여백 */
+    margin-top: 20px;
+}
+/* 화면 중앙 요소 버튼 처리 */
+.container .hero button:hover{
+    background-color: rgb(62, 32, 56);
+}
