@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Black Han Sans", sans-serif;
+    font-size: 20px;
+    
+}
+
+body{
+    /*body 배경색, 이미지, 크기 지정*/
+    width: 100%; 
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(https://i.namu.wiki/i/s5uIg5Zy_zookooC_zHh0cVKeQ-YXpV7RNwNOfdVTo8MiPbpJjiKylD9fMUG6pBx0vHwW2UfnPQZNCFW1VrMCA.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body .main{
+    /*계산기 부분 위치 지정*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);   
+    
+}
+body .main .text{
+    /*텍스트, 보더 색, 크기 지정*/
+    border-color: rgba(255, 255, 255, 0);
+    background-color: whitesmoke;
+    height: 20px;
+    width: 80%;      
+} 
+
+body .main h4{
+    color: whitesmoke;
+}
+
+body .main .button {
+    /*버튼 크기, 둥글기, 색, 마진*/
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    background-color: whitesmoke;
+    font-size: large;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+body .main .large{
+    display: flex;
+}
+
+body .main .button:hover {
+    background-color: #cdcdcd; /* 호버 상태일 때 색상 */
+}
+
+body .main .button:active {
+    background-color: #989797; /* 클릭할 때 색상 */
+    color: whitesmoke;
+}
+body .main .butt{
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    background-color: rgb(253, 236, 213);
+    font-size: large;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+body .main .butt:hover{
+    background-color: rgb(237, 213, 182);
+}
+body .main .butt:active{
+    background-color: rgb(247, 193, 124); /* 클릭할 때 색상 */
+    color: whitesmoke;
+}
+
+body .main .two-button{
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    background-color: rgb(253, 236, 213);
+    font-size: large;
+    flex: 0.63;
+    margin: 0.5%;
+}
+body .main .two-button:hover{
+    background-color: rgb(237, 213, 182);
+}
+body .main .two-button:active{
+    background-color: rgb(247, 193, 124); /* 클릭할 때 색상 */
+    color: whitesmoke;
+}
+
+body .main .butto{
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    background-color: rgb(253, 213, 213);
+    font-size: large;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+body .main .butto:hover{
+    background-color:  rgb(252, 196, 196);
+}
+body .main .butto:active{
+    background-color:  rgb(224, 154, 154); /* 클릭할 때 색상 */
+    color: whitesmoke;
+}
+

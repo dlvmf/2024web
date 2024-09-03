@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculatorwebpracstyle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    
+    <script>
+        //생성형 ai, chat-gpt를 활용하여 코드를 짜고 직접 수정했습니다. 특히 deleteNumber 함수는 gpt의 도움을 받았습니다. //
+        /*함수에서 사용할 입력받는 값, 연산자 설정*/
+        let nowvalue = 0;
+        let nowoper = '';
+        /*초기화*/
+        function restart(){
+            document.getElementById("number1").value ='';
+            document.getElementById("number2").value ='';
+            document.getElementById("result").value ='';
+            nowvalue = 0;
+            nowoper = '';
+
+        }
+        /*숫자 버튼으로 입력받기*/
+        function chooseNumber(num){
+            let num1 = document.getElementById("number1");
+            let num2 = document.getElementById("number2");
+            if(nowoper ===''){
+                if(num1.value ==='') num1.value = num;
+                else num1.value = num1.value+num;
+            }
+            else{
+                if(num2.value==='') num2.value = num;
+                else num2.value = num2.value+num;
+            }
+
+        }
+        /*연산자 입력받기*/
+        function chooseOperation(op){
+            let num1 = document.getElementById("number1").value;
+            nowvalue = parseFloat(num1);
+            nowoper = op;
+            document.getElementById("number2").value ='';
+
+
+        }
+        /*계산하기*/
+        function calculation(){
+            let num1 = nowvalue;
+            let num2 = parseFloat(document.getElementById("number2").value);
+            let result;
+            /*연산자에 따라 result값*/
+            switch(nowoper){
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1*num2;
+                    break;
+                case '/':
+                    result = num1/num2;
+                    break;
+                default:
+                    return;
+            }
+            let resultValue = document.getElementById("result");
+            resultValue.value =result;
+            resultValue.style.color = 'red'; /*계산 결과 나왔을 때 result value 글자 색 red로 바꾸기*/
+            setTimeout(() => {
+                resultValue.style.color='';
+            }, 1000); /*1000만큼 빨간 색 유지*/
+
+            document.getElementById("result").value = result;
+            document.getElementById("number1").value = num1;
+            document.getElementById("number2").value = num2;
+            nowvalue = result; /*현재 값을 계산해서 나온 result로*/
+        }
+        /*이전에 선택된 연산자가 있는지 없는지*/
+        function chooseOperator(op){
+            if(nowoper !=='') calculation();
+            chooseOperation(op);
+        }
+        /*숫자 지우기*/
+        function deleteNumber(){
+            let num1 = document.getElementById("number1");
+            let num2 = document.getElementById("number2");
+            if(nowoper==='') num1.value = num1.value.slice(0,-1);
+            else num2.value = num2.value.slice(0,-1);
+            
+        }
+    </script>
+</head>
+<body>
+        <div class="main">
+
+            <h4>NUMBER:</h4>
+            <input type=text id="number1" value="" class="text"><br>
+            <input type=text id="number2" value="" class="text"><br>
+            <h4>RESULT:</h4>
+            <input type=text id="result" value=""class="text"><br><br>
+            <h4>CALCULATE:</h4>
+                <input type=button value="7" onClick="chooseNumber(7)" class="button">
+                <input type=button value="8" onClick="chooseNumber(8)" class="button">      
+                <input type=button value="9" onClick="chooseNumber(9)" class="button">
+                <input type=button value="/" onClick = "chooseOperator('/')" class="butt">
+                <input type=button value="AC" onClick="restart()" class="butto"><br>
+
+                <input type=button value="4" onClick="chooseNumber(4)" class="button">
+                <input type=button value="5" onClick="chooseNumber(5)" class="button">
+                <input type=button value="6" onClick="chooseNumber(6)" class="button">
+                <input type=button value="*" onClick = "chooseOperator('*')" class="butt">
+                <input type="button" value="D" onClick="deleteNumber()" class="butto"><br>
+
+                <input type=button value="1" onClick="chooseNumber(1)" class="button">
+                <input type=button value="2" onClick="chooseNumber(2)" class="button">
+                <input type=button value="3" onClick="chooseNumber(3)" class="button">
+                <input type=button value="+" onClick="chooseOperator('+')" class="butt"><br>
+        
+                <div class="large">
+                    <input type=button value="0" onClick="chooseNumber(0)" class="button">            
+                    <input type=button value="=" onClick="calculation()" class="two-button">    
+                    <input type=button value="-" onClick = "chooseOperator('-')" class="butt">
+                </div>
+
+            
+        </div>
+</body>
+</html>
