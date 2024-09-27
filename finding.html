@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <link rel="stylesheet" href="findingstyle.css"/>
+</head>
+
+<body>
+    <h1>지뢰찾기</h1>
+    <div>
+        남은 지뢰: <span id = "count">0</span>
+    </div>
+
+
+    <table id=board></table>
+    <BUTTON onclick="genGrid();">새로운 게임</BUTTON>
+    <script>
+        let grid = document.getElementById("board");
+        let minecount = document.getElementById("count");
+        let allmine =0;
+        let findmine =0;
+        let remaincount =0;
+        genGrid();
+
+        function genGrid() {
+            grid.innerHTML = "";
+            allmine =0;
+            findmine =0;
+            for (let i = 0; i < 8; i++) {
+                let row = grid.insertRow(i);
+                for (let j = 0; j < 8; j++) {
+                    let cell = row.insertCell(j);
+                    cell.onclick = function () { clickBox(this); };
+                    let mine = document.createAttribute("mine");
+                    if (Math.random() < 0.2){
+                        mine.value = "true";
+                        allmine++;
+                    }
+                    else
+                        mine.value = "false";
+                    cell.setAttributeNode(mine);
+                }
+                addcount();
+                
+            }
+        }
+
+        function clickBox(cell) {
+            if (cell.getAttribute("mine") === "true") {
+                cell.className = "mine";
+                findmine++;
+                addcount();
+                alert("지뢰를 찾았습니다.");
+                changecolor();
+                setTimeout(() => {
+                    changecolore();
+                }, 3000); //3초 이후 색 바뀌는 코드 (open Ai 활용)
+                
+            } else {
+                cell.className = "clicked";
+            }
+        }
+
+        function changecolor(){
+            const newcell = grid.getElementsByTagName("td");
+            for(let cell of newcell){
+                cell.classList.add("changered");
+            }
+        }
+        function changecolore(){
+            const newcellre = grid.getElementsByTagName("td");
+            for(let cell of newcellre){
+                if(!cell.classList.contains("mine"))
+                    cell.classList.add("changere");
+            }
+        }
+
+
+        function addcount(){
+            remaincount = allmine - findmine;
+            minecount.textContent = remaincount;
+        }
+        
+    </script>
+</body>
+
+</html>
